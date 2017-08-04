@@ -348,7 +348,7 @@ public class DiscoveryServiceIT extends WatsonServiceTest {
 
   @Test(expected = UnauthorizedException.class)
   public void badCredentialsThrowsException() {
-    Discovery badService = new Discovery(Discovery.VERSION_DATE_2016_12_01, "foo", "bar");
+    Discovery badService = new Discovery(Discovery.VERSION_DATE_2017_08_01, "foo", "bar");
     badService.listEnvironments(null).execute();
   }
 
@@ -836,7 +836,7 @@ public class DiscoveryServiceIT extends WatsonServiceTest {
     UpdateDocumentOptions.Builder updateBuilder =
         new UpdateDocumentOptions.Builder(environmentId, collectionId, documentAccepted.getDocumentId());
     updateBuilder.file(documentStream).fileMediaType(HttpMediaType.APPLICATION_JSON);
-    updateBuilder.configurationId(testConfig.getConfigurationId());
+    //updateBuilder.configurationId(testConfig.getConfigurationId());
     DocumentAccepted updateResponse = discovery.updateDocument(updateBuilder.build()).execute();
 
     GetDocumentStatusOptions getOptions =
